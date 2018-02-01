@@ -46,9 +46,11 @@ $(document).ready(function(){
 function initHtmlVal(){
 	
 	if (isChineseLang())
-		$("#zikko_connect").val("连接您所想");
+		document.getElementById("zikko_connect").innerHTML=“连接您所想”;
+		//$("#zikko_connect").val("连接您所想");
 	else
-		$("#zikko_connect").val("Connet you want");
+		document.getElementById("zikko_connect").innerHTML=“Connet you want”;
+		//$("#zikko_connect").val("Connet you want");
 	
 }
 
