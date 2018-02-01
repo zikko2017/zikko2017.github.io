@@ -1,6 +1,8 @@
 
 $(document).ready(function(){
 
+	initHtmlVal();
+
     /*Carousel view scripts*/
     $("#testimonial").owlCarousel({
         items: 1,
@@ -41,22 +43,15 @@ $(document).ready(function(){
 
 });
 
-/*Nav bar script to open*/
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "20px";
-    document.getElementById("main").style.marginLeft = "20px";
-    document.getElementById("overlay").style.width = "100%";
-    document.getElementById("overlay").style.height = "100%";
-    /*document.getElementById("overlay").style.backgroundColor = "rgba(0,0,0,0.4)";*/            
+function initHtmlVal(){
+	
+	if (isChineseLang())
+		$("#zikko_connect").val("连接您所想");
+	else
+		$("#zikko_connect").val("Connet you want");
+	
 }
-/*Script to close nav bar*/
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
-    document.getElementById("overlay").style.width = "0%";
-    document.getElementById("overlay").style.height = "0%";
-}
+
 
 /*ios download app*/
 function appDownload(){
@@ -98,14 +93,14 @@ function appDownload(){
 
 
 	// 是微信内部webView
-	if (is_weixn()) {
+	/*if (is_weixn()) {
 
 		if (isChineseLang())
 			alert("请点击右上角按钮, 点击使用浏览器打开");
 		else
 			alert("Please click on the upper right button, click on the browser to open");
 
-	}
+	}*/
 }
 
 // 是微信浏览器
