@@ -116,12 +116,12 @@ function initViewText() {
     var connectContent = document.getElementsByTagName("h4")[0];
     var downloadIOS = document.getElementsByTagName("h6")[0];
     var downloadAndroid = document.getElementsByTagName("h6")[1];
-    if (isChinese){
+    if (false){
         connectContent.innerHTML = "连 接 您 所 想";
-        downloadIOS.innerHTML = "IOS下载888";
+        downloadIOS.innerHTML = "IOS下载";
         downloadAndroid.innerHTML = "Android下载";
     }else{
-        downloadIOS.innerHTML = "IOS Download888";
+        downloadIOS.innerHTML = "IOS Download";
         downloadAndroid.innerHTML = "Android Download";
         connectContent.innerHTML = "Connect you want";
     }

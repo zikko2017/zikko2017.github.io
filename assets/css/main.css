@@ -130,6 +130,61 @@ h6{
 	/*transform: translateY(-50%);*/
 	/*z-index: 1;*/
 }
+
+.img-logo{
+	margin-left: -15px
+}
+
+.phone-container{
+	height: auto;
+	width: 65%;
+	float: left;
+	margin-left: -35px;
+	margin-bottom: 80px
+}
+
+.text-container{
+	height: auto;
+	width: 35%;
+	float: right;
+	margin-right: 35px;
+	margin-top: 50px;
+}
+
+.connect-div{
+	text-align:center;
+	color: white;
+	width: 125%;
+	padding-left: -10px;
+	padding-top: 10px;
+}
+
+.fun-text-connect{
+	color: white;
+	font-size: 16px;
+	font-family: 'Lucida Console'
+}
+
+.ios_div{
+	margin-left: -25px;
+	margin-top: -5px;
+}
+
+.dl-ios-text{
+	padding-top: 3px;
+	margin-left: 0px;
+	text-align: right;
+}
+
+.dl-android-text{
+	padding-top: 3px;
+	padding-right: 20px;
+}
+
+.android_div{
+	margin-left: -25px;
+}
+
 .menu-bar{
 	padding-top: 3%;
 	z-index: 1;
@@ -172,7 +227,7 @@ h6{
 	border-radius: 50px;
 	color: #ffffff;
 	width: 135%;
-	margin-top: 15%;
+	margin-top: 25%;
 	font-family: 'Roboto';
 }
 .craft-btn span{
@@ -183,9 +238,11 @@ h6{
 .craft-btn-content h4{
 	font-size: 20px;
 }
+.craft-btn-content{
+	text-align: left;
+}
 .craft-btn-content h6{
-	vertical-align: center;
-	horiz-align: center;
+
 	font-size: 15px;
 }
 .craft-btn-content h4, .craft-btn-content h6{
