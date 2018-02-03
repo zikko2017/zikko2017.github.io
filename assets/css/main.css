@@ -132,7 +132,8 @@ h6{
 }
 
 .img-logo{
-	margin-left: -15px
+	margin-left: -15px;
+	padding-top: 20px;
 }
 
 .phone-container{
@@ -151,22 +152,26 @@ h6{
 	margin-top: 50px;
 }
 
+.img-responsive{
+	padding-left: -30px;
+}
+
 .connect-div{
 	text-align:center;
 	color: white;
 	width: 125%;
 	padding-left: -10px;
-	padding-top: 10px;
+	padding-top: 30px;
 }
 
 .fun-text-connect{
 	color: white;
-	font-size: 25px;
+	font-size: 30px;
 	font-family: 'Lucida Console'
 }
 
 .ios_div{
-	margin-left: -25px;
+	margin-left: -10px;
 	margin-top: -5px;
 }
 
@@ -183,7 +188,7 @@ h6{
 }
 
 .android_div{
-	margin-left: -25px;
+	margin-left: -10px;
 }
 
 .menu-bar{
@@ -228,7 +233,7 @@ h6{
 	border-radius: 50px;
 	color: #ffffff;
 	width: 100%;
-	min-height: 40px;
+	min-height: 60px;
 	margin-top: 25%;
 	font-family: 'Roboto';
 }
@@ -236,17 +241,17 @@ h6{
 	float: left;
 	text-align: center;
 	margin-left: 0px;
-	font-size: 20px;
+	font-size: 40px;
 }
 .craft-btn-content h4{
-	font-size: 25px;
+	font-size: 30px;
 }
 .craft-btn-content{
 	text-align: left;
 }
 .craft-btn-content h6{
 
-	font-size: 20px;
+	font-size: 25px;
 }
 .craft-btn-content h4, .craft-btn-content h6{
 	margin: 0px;
