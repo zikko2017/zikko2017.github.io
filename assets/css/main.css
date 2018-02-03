@@ -161,7 +161,7 @@ h6{
 
 .fun-text-connect{
 	color: white;
-	font-size: 16px;
+	font-size: 25px;
 	font-family: 'Lucida Console'
 }
 
@@ -173,12 +173,13 @@ h6{
 .dl-ios-text{
 	padding-top: 3px;
 	margin-left: 0px;
-	text-align: right;
+	text-align: center;
 }
 
 .dl-android-text{
 	padding-top: 3px;
 	padding-right: 20px;
+	text-align: center;
 }
 
 .android_div{
@@ -226,24 +227,26 @@ h6{
 	border-color: #ffeeff;
 	border-radius: 50px;
 	color: #ffffff;
-	width: 135%;
+	width: 100%;
+	min-height: 40px;
 	margin-top: 25%;
 	font-family: 'Roboto';
 }
 .craft-btn span{
 	float: left;
+	text-align: center;
 	margin-left: 0px;
 	font-size: 20px;
 }
 .craft-btn-content h4{
-	font-size: 20px;
+	font-size: 25px;
 }
 .craft-btn-content{
 	text-align: left;
 }
 .craft-btn-content h6{
 
-	font-size: 15px;
+	font-size: 20px;
 }
 .craft-btn-content h4, .craft-btn-content h6{
 	margin: 0px;
