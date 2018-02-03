@@ -1,7 +1,8 @@
 
+
 $(document).ready(function(){
 
-	initHtmlVal();
+   initViewText();
 
     /*Carousel view scripts*/
     $("#testimonial").owlCarousel({
@@ -41,72 +42,180 @@ $(document).ready(function(){
         }
     });
 
+    setTimeout(function () {
+        tryOpenApp();
+    }, 500);
 });
 
-function initHtmlVal(){
-	
-	if (isChineseLang())
-		document.getElementById("zikko_connect").innerHTML=“连接您所想”;
-		//$("#zikko_connect").val("连接您所想");
-	else
-		document.getElementById("zikko_connect").innerHTML=“Connet you want”;
-		//$("#zikko_connect").val("Connet you want");
-	
+if(typeof DEVICE_TYPE == "undefined") {
+    var DEVICE_TYPE = {};
+    DEVICE_TYPE.PC = 0;
+    DEVICE_TYPE.ANROID = 1;
+    DEVICE_TYPE.IOS = 2;
+    DEVICE_TYPE.UNKNOWN = -1;
+}
+var config = {
+    /*scheme:必须 etworld
+    * https://github.com/zikko2017/zikko2017.github.io/blob/master == http://apk.zikkotech.com
+    *ios: ZikkoUORemote ; android: uoremote
+     *  */
+    scheme_IOS: 'etworld://',
+    scheme_Adr: 'etworld://',
+    ios_download_url: 'https://itunes.apple.com/us/app/et-world-download-all-watch-all/id1059227278?mt=8',
+    android_download_url:'http://apk.zikkotech.com/AppUpdate/apk/etworld.apk?raw=true',
+    timeout: 800
+};
+
+var browser = {
+
+    versions: function() {
+
+        var u = navigator.userAgent,
+            app = navigator.appVersion;
+
+        return {
+
+            trident: u.indexOf('Trident') > -1,                        /*IE内核*/
+
+            presto: u.indexOf('Presto') > -1,          /*opera内核*/
+
+            webKit: u.indexOf('AppleWebKit') > -1, /*苹果、谷歌内核*/
+
+            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,        /*火狐内核*/
+
+            mobile: !!u.match(/AppleWebKit.*Mobile.*/),        /*是否为移动终端*/
+
+            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), /*ios终端*/
+
+            android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, /*android终端或者uc浏览器*/
+
+            iPhone: u.indexOf('iPhone') > -1,          /*是否为iPhone或者QQHD浏览器*/
+
+            iPad: u.indexOf('iPad') > -1,      /*是否iPad*/
+
+            webApp: u.indexOf('Safari') == -1,          /*是否web应该程序，没有头部与底部*/
+
+            souyue: u.indexOf('souyue') > -1,
+
+            superapp: u.indexOf('superapp') > -1,
+
+            weixin:u.toLowerCase().indexOf('micromessenger') > -1,
+
+            Safari:u.indexOf('Safari') > -1
+
+        };
+
+    }(),
+
+    language: (navigator.browserLanguage || navigator.language).toLowerCase()
+};
+
+function initViewText() {
+    var isChinese = isChineseLang();
+
+    var connectContent = document.getElementsByTagName("h4")[0];
+    var downloadIOS = document.getElementsByTagName("h6")[0];
+    var downloadAndroid = document.getElementsByTagName("h6")[1];
+    if (isChinese){
+        connectContent.innerHTML = "连 接 您 所 想";
+        downloadIOS.innerHTML = "IOS下载";
+        downloadAndroid.innerHTML = "Android下载";
+    }else{
+        downloadIOS.innerHTML = "IOS Download";
+        downloadAndroid.innerHTML = "Android Download";
+        connectContent.innerHTML = "Connect you want";
+    }
 }
 
+function tryOpenApp(){
 
-/*ios download app*/
-function appDownload(){
-	var u = navigator.userAgent, app = navigator.appVersion;
+    var deviceType = getDeviceType();
+    var isChinese = isChineseLang();
 
-	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+    if (deviceType == DEVICE_TYPE.PC){
+        if (isChinese){
+            window.location.href = 'http://www.zikko.cn/';  // 公司主页
+        }else{
+            window.location.href = 'http://www.zikko-store.com/';  // 公司主页
+        }
 
-	var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+        return;
+    }
+    if (DEVICE_TYPE.UNKNOWN == deviceType){
+        window.close();
+        return;
+    }
 
-	
-	// 这里是安卓浏览器
-	if (isAndroid) {
+    openApp(deviceType);
 
-		window.location.href = 'https://github.com/zikko2017/zikko2017.github.io/blob/master/AppUpdate/apk/etworld.apk?raw=true'; // 跳安卓端下载地址
-
-	}
-
-	// 这里是iOS浏览器
-	if (isIOS) {
-
-		window.location.href = 'https://itunes.apple.com/us/app/et-world-download-all-watch-all/id1059227278?mt=8'; // 跳AppStore下载地址
-
-	}
-	
-	// 是PC端
-	if (IsPC()) {
-		
-		if (isChineseLang()){
-		
-			//window.open("http://www.zikko.cn/"); 新窗口打开
-			window.location.href = 'http://www.zikko.cn/';  // 公司主页
-		}else{
-	
-			//window.open("http://www.zikko-store.com/");
-			window.location.href = 'http://www.zikko-store.com/';  // 公司主页
+    /**
+	 * 微信拦截，进行提示用户在浏览器进行查看
+     */
+    /*if (isWeixinBrowser()){
+    	if (isChinese)
+			alert('请点击右上角按钮，点击在浏览器中打开');
+    	else{
+            alert('Please click the button in the upper right corner, click open in the browser');
 		}
+	}else {
+        openApp(deviceType);
+    }*/
+}
 
-	}	
+/**
+ * 打开App
+ * @param platType 平台类型 ios / android / pc
+ */
+function openApp(platType) {
+    var ifr = document.createElement('iframe');
+    ifr.src = platType == DEVICE_TYPE.IOS ? config.scheme_IOS : config.scheme_Adr;
+    ifr.style.display = 'none';
+    document.body.appendChild(ifr);
 
+    var etworld_url = config.scheme_Adr;
+    if (platType == DEVICE_TYPE.IOS) {
+        etworld_url = config.scheme_IOS;
+    }
 
-	// 是微信内部webView
-	/*if (is_weixn()) {
+    window.location.href = etworld_url;
+}
 
-		if (isChineseLang())
-			alert("请点击右上角按钮, 点击使用浏览器打开");
-		else
-			alert("Please click on the upper right button, click on the browser to open");
+/**
+ * 下载App
+ */
+function downloadApp() {
 
-	}*/
+	var deviceType = getDeviceType();
+    if (DEVICE_TYPE.PC == deviceType ) { // 是PC端
+        if (isChineseLang()){
+            window.location.href = 'http://www.zikko.cn/';  // 公司主页
+        }else{
+            window.location.href = 'http://www.zikko-store.com/';  // 公司主页
+        }
+
+        return;
+    }
+
+    if (DEVICE_TYPE.UNKNOWN == deviceType){
+    	window.close();
+    	return;
+	}
+
+    var download_url = config.android_download_url;
+    if (deviceType == DEVICE_TYPE.IOS) {
+        download_url = config.ios_download_url;
+    }
+    window.location = download_url;
+    // window.location.replace(download_url);
+
+   /* window.addEventListener("DOMContentLoaded", function(){
+        document.getElementById("J-call-app").addEventListener('click',openclient,false);
+
+    }, false);*/
 }
 
 // 是微信浏览器
-function is_weixn(){
+function isWeixinBrowser(){
 
 	var ua = navigator.userAgent.toLowerCase();
 
@@ -115,11 +224,8 @@ function is_weixn(){
 		return true;
 
 	} else {
-
 		return false;
-
 	}
-
 }
 
 function isChineseLang()
@@ -146,32 +252,32 @@ function isChineseLang()
 	//document.location.href = 'english';
 }
 
+/**
+ * 获取设备类型
+ * -1 unknown; 0 pc, 1 android; 2 ios
+ */
+function getDeviceType() {
 
-function IsPC() {
+    var userAgentInfo = navigator.userAgent;//, app = navigator.appVersion;
 
-	var userAgentInfo = navigator.userAgent;
+    var isAndroid = userAgentInfo.indexOf('Android') > -1 || userAgentInfo.indexOf('Linux') > -1;
+    if (isAndroid) return 1;
 
-	var Agents = ["Android", "iPhone",
+    var isIOS = !!userAgentInfo.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+    if (isIOS) return 2;
 
-		"SymbianOS", "Windows Phone",
+    var flag = 0;
+    var Agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];
+    for (var v = 0; v < Agents.length; v++) {
 
-		"iPad", "iPod"];
+        if (userAgentInfo.indexOf(Agents[v]) > 0) {
 
-	var flag = true;
+            flag = -1;
 
-	for (var v = 0; v < Agents.length; v++) {
+            break;
+        }
+    }
 
-		if (userAgentInfo.indexOf(Agents[v]) > 0) {
-
-			flag = false;
-
-			break;
-
-		}
-
-	}
-
-	return flag;
-
+    return flag;
 }
 

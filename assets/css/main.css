@@ -114,15 +114,21 @@ h6{
 /*The head section style*/
 .head{							/*Style's applied for full device height head section */
 	min-height: 100vh;
-	background-image: url(../img/1.jpg);
+	background-image: url(../img/et_bg.jpg);
 	background-size: 100% 100%;
 	z-index: -1;
-	background-attachment: fixed;
+	display:flex;/*Flex布局*/
+	display: -webkit-flex; /* Safari */
+	align-items:center;/*指定垂直居中*/
 }
-.head .blur{
-	padding-top: 0px;
-	padding-bottom: 0px;
-	min-height: 100vh;
+
+.head.container{
+	position: relative;
+	bottom: 100px;
+	/*position: absolute;*/
+	/*top: 50%;*/
+	/*transform: translateY(-50%);*/
+	/*z-index: 1;*/
 }
 .menu-bar{
 	padding-top: 3%;
@@ -162,24 +168,25 @@ h6{
 }
 /*Download button property*/
 .craft-btn{
-	border-color: #ffffff;
+	border-color: #ffeeff;
 	border-radius: 50px;
 	color: #ffffff;
-	padding: 5px 15px;
-	margin-top: 5%;
-	margin-bottom: 30px;
-	margin-right: 10px;
+	width: 115%;
+	margin-top: 15%;
 	font-family: 'Roboto';
 }
 .craft-btn span{
 	float: left;
-	font-size: 40px;
+	margin-left: 0px;
+	font-size: 20px;
 }
 .craft-btn-content h4{
 	font-size: 20px;
 }
 .craft-btn-content h6{
-	font-size: 14px;
+	vertical-align: center;
+	horiz-align: center;
+	font-size: 12px;
 }
 .craft-btn-content h4, .craft-btn-content h6{
 	margin: 0px;
@@ -265,7 +272,7 @@ iframe {
 }
 .social li:hover{
 	border:1px solid #e1666a;
-	transform: .5s;
+	transform: none;
 }
 .social{
 	padding-top: 20px;
