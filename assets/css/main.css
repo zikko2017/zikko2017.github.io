@@ -171,7 +171,7 @@ h6{
 	border-color: #ffeeff;
 	border-radius: 50px;
 	color: #ffffff;
-	width: 115%;
+	width: 135%;
 	margin-top: 15%;
 	font-family: 'Roboto';
 }
@@ -186,7 +186,7 @@ h6{
 .craft-btn-content h6{
 	vertical-align: center;
 	horiz-align: center;
-	font-size: 12px;
+	font-size: 15px;
 }
 .craft-btn-content h4, .craft-btn-content h6{
 	margin: 0px;
