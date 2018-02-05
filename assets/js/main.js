@@ -163,6 +163,8 @@ function tryOpenApp(){
     var deviceType = getDeviceType();
     var isEnglish = getBrowserLanguage() == LANG_TYPE.ENGLISH;
 
+    alert(deviceType);
+
     if (deviceType == DEVICE_TYPE.PC){
         if (isEnglish){
             window.location.href = 'http://www.zikko-store.com/';  // 公司主页
@@ -209,7 +211,7 @@ function openApp(platType) {
     }
 
     alert(etworld_url);
-    
+
     window.location.href = etworld_url;
     document.body.removeChild(ifr);
 }
