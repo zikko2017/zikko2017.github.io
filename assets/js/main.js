@@ -2,10 +2,11 @@
 
 $(document).ready(function(){
 
-   initViewText();
+    var langType = getBrowserLanguage();
+   initViewText(langType);
 
     /*Carousel view scripts*/
-  /*  $("#testimonial").owlCarousel({
+/*    $("#testimonial").owlCarousel({
         items: 1,
         loop:true,
         autoplay: true,
@@ -14,36 +15,36 @@ $(document).ready(function(){
         margin: 10,
         nav: true,
         autoHeight: true
+    });
+
+    /!*Menu bar background color change script*!/
+    $("#menu-click").click(function(event){
+            event.preventDefault();
+        });
+    $(window).scroll(function(){
+       var scrollTop = $(window).scrollTop();
+        if(scrollTop>100){
+             $("#nav").css("background-color", "black");
+         }
+        else{
+        $("#nav").css("background-color", "transparent");
+    }
+    });
+
+    /!*Smoth transition script*!/
+     // This is a functions that scrolls to #{blah}link
+    $('a[href^="#"]').on('click', function(event) {
+        var target = $(this.getAttribute('href'));
+        if( target.length ) {
+            event.preventDefault();
+            $('html, body').stop().animate({
+                scrollTop: target.offset().top
+            }, 1000);
+        }
     });*/
 
-    /*Menu bar background color change script*/
-    // $("#menu-click").click(function(event){
-    //         event.preventDefault();
-    //     });
-    // $(window).scroll(function(){
-    //    var scrollTop = $(window).scrollTop();
-    //     if(scrollTop>100){
-    //          $("#nav").css("background-color", "black");
-    //      }
-    //     else{
-    //     $("#nav").css("background-color", "transparent");
-    // }
-    // });
-    //
-    // /*Smoth transition script*/
-    //  // This is a functions that scrolls to #{blah}link
-    // $('a[href^="#"]').on('click', function(event) {
-    //     var target = $(this.getAttribute('href'));
-    //     if( target.length ) {
-    //         event.preventDefault();
-    //         $('html, body').stop().animate({
-    //             scrollTop: target.offset().top
-    //         }, 1000);
-    //     }
-    // });
-
     setTimeout(function () {
-        tryOpenApp();
+        tryOpenApp(langType);
     }, 1000);
 });
 
@@ -118,9 +119,7 @@ var browser = {
     language: (navigator.browserLanguage || navigator.language).toLowerCase()
 };
 
-function initViewText() {
-    var langType = getBrowserLanguage();
-
+function initViewText(langType) {
     var connectContent = document.getElementsByTagName("h4")[0];
     var downloadIOS = document.getElementsByTagName("h6")[0];
     var downloadAndroid = document.getElementsByTagName("h6")[1];
@@ -158,10 +157,10 @@ function initViewText() {
     }
 }
 
-function tryOpenApp(){
+function tryOpenApp(langType){
 
     var deviceType = getDeviceType();
-    var langType = getBrowserLanguage();
+    // var langType = getBrowserLanguage();
 
     // alert(deviceType);
 
@@ -213,7 +212,7 @@ function openApp(platType) {
     // alert(etworld_url);
 
     window.location.href = etworld_url;
-    document.body.removeChild(ifr);
+    // document.body.removeChild(ifr);
 }
 
 /**
@@ -268,16 +267,18 @@ function isWeixinBrowser(){
 
 function getBrowserLanguage()
 {
-    var language = null;
-	if (navigator.appName.toLocaleLowerCase().indexOf('netscape') > -1)// == 'Netscape'
-		language = navigator.language.toLocaleLowerCase();
-	else {
-	    try{
-            language = navigator.browserLanguage.toLocaleLowerCase();
-        }catch(err){
-            language = null;
-        }
-    }
+    var language = browser.language;
+    // if (navigator.appName.toLocaleLowerCase().indexOf('netscape') > -1)// == 'Netscape'
+		// language = navigator.language.toLocaleLowerCase();
+    // else {
+	 //    try{
+    //         language = browser.language;
+    //     }catch(err){
+    //         language = null;
+    //     }
+    // }
+
+    // alert(language);
 
     if (language != null){
         if (language.indexOf('zh') > -1){
