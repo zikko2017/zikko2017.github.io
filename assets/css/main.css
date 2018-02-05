@@ -1,9 +1,9 @@
 /*This is the whole boby default style*/
 body{
-	font-family: 'Lora', serif;
+	font-family: 微软雅黑, serif;
 }
 h1,h2,h3,h4,h5,h6,button{
-	font-family: 'Roboto', sans-serif;
+	font-family: 微软雅黑, sans-serif;
 	font-weight: 400;
 
 }
@@ -132,63 +132,61 @@ h6{
 }
 
 .img-logo{
-	margin-left: -15px;
-	padding-top: 20px;
+	margin-left: -30px;
+	padding-top: 10px;
 }
 
 .phone-container{
 	height: auto;
 	width: 65%;
 	float: left;
-	margin-left: -35px;
-	margin-bottom: 80px
+	margin-left: -120px;
+	margin-bottom: 250px
 }
 
 .text-container{
 	height: auto;
 	width: 35%;
 	float: right;
-	margin-right: 35px;
-	margin-top: 50px;
+	margin-right: 65px;
+	margin-top: 40px;
 }
 
 .img-responsive{
-	padding-left: -30px;
+	padding-left: 0px;
 }
 
 .connect-div{
 	text-align:center;
 	color: white;
 	width: 125%;
-	padding-left: -10px;
-	padding-top: 30px;
+	padding-left: 20px;
+	padding-top: 40px;
 }
 
 .fun-text-connect{
 	color: white;
-	font-size: 30px;
-	font-family: 'Lucida Console'
+	font-size: 40px;
+	font-family: 微软雅黑;
 }
 
 .ios_div{
-	margin-left: -10px;
-	margin-top: -5px;
+
 }
 
 .dl-ios-text{
-	padding-top: 3px;
+	padding-top: 7px;
 	margin-left: 0px;
 	text-align: center;
 }
 
 .dl-android-text{
-	padding-top: 3px;
+	padding-top: 7px;
 	padding-right: 20px;
 	text-align: center;
 }
 
 .android_div{
-	margin-left: -10px;
 }
 
 .menu-bar{
@@ -227,31 +225,40 @@ h6{
 	font-size:0;
 	overflow:hidden;
 }
+
+.fa-apple{
+	padding-top: 6px;
+}
+
+.fa-android{
+	padding-top: 6px;
+}
+
 /*Download button property*/
 .craft-btn{
 	border-color: #ffeeff;
 	border-radius: 50px;
 	color: #ffffff;
-	width: 100%;
-	min-height: 60px;
-	margin-top: 25%;
-	font-family: 'Roboto';
+	width: 160%;
+	margin-left: -30px;
+	min-height: 70px;
+	margin-top: 30%;
+	font-family: 微软雅黑;
 }
 .craft-btn span{
 	float: left;
-	text-align: center;
-	margin-left: 0px;
+	padding-left: 6px;
 	font-size: 40px;
 }
 .craft-btn-content h4{
-	font-size: 30px;
+	font-size: 50px;
 }
 .craft-btn-content{
 	text-align: left;
 }
 .craft-btn-content h6{
 
-	font-size: 25px;
+	font-size: 35px;
 }
 .craft-btn-content h4, .craft-btn-content h6{
 	margin: 0px;

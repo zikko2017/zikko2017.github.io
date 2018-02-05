@@ -44,7 +44,7 @@ $(document).ready(function(){
 
     setTimeout(function () {
         tryOpenApp();
-    }, 500);
+    }, 1000);
 });
 
 if(typeof DEVICE_TYPE == "undefined") {
