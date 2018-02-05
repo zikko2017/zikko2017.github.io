@@ -240,11 +240,13 @@ function downloadApp() {
     if (deviceType === 2) {
         download_url = config.ios_download_url;
 
-        alert('open app55: ' + download_url);
+        alert('open app666: ' + download_url);
 
-        window.location.href = download_url;
-        window.location = download_url;
-        window.location.replace(download_url);
+        var ifr = document.createElement('iframe');
+        ifr.src = download_url;
+        ifr.style.display = 'none';
+        document.body.appendChild(ifr);
+        location.href = download_url;
         return;
     }
 
