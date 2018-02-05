@@ -163,7 +163,7 @@ function tryOpenApp(){
     var deviceType = getDeviceType();
     var isEnglish = getBrowserLanguage() == LANG_TYPE.ENGLISH;
 
-    alert(deviceType);
+    // alert(deviceType);
 
     if (deviceType == DEVICE_TYPE.PC){
         if (isEnglish){
@@ -210,7 +210,7 @@ function openApp(platType) {
         etworld_url = config.scheme_IOS;
     }
 
-    alert(etworld_url);
+    // alert(etworld_url);
 
     window.location.href = etworld_url;
     document.body.removeChild(ifr);
