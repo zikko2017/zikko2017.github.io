@@ -241,9 +241,9 @@ function downloadApp() {
         download_url = config.ios_download_url;
     }
 
-    alert('open app01: ' + download_url);
+    alert('open app22: ' + download_url);
 
-
+    window.open(download_url);
      window.location.href = download_url;
      // window.location.replace(download_url);
 
