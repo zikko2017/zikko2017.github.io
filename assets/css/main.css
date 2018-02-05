@@ -209,7 +209,7 @@ h6{
 }
 .craft-btn-content h4, .craft-btn-content h6{
 	margin: 0px;
-	margin-left: 40px;
+	margin-left: 0px;
 }
 
 .craft-btn:hover{
