@@ -209,6 +209,7 @@ function openApp(platType) {
     }
 
     window.location.href = etworld_url;
+    document.body.removeChild(ifr);
 }
 
 /**
