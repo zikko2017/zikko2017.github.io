@@ -243,8 +243,9 @@ function downloadApp() {
 
     alert('open app: ' + download_url);
 
-    window.location = download_url;
-    // window.location.replace(download_url);
+
+    //window.location = download_url;
+     window.location.replace(download_url);
 
    /* window.addEventListener("DOMContentLoaded", function(){
         document.getElementById("J-call-app").addEventListener('click',openclient,false);
