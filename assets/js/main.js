@@ -132,11 +132,11 @@ function initViewText() {
         downloadIOS.style.paddingTop = '8px';
         downloadAndroid.style.fontSize = '30px';
         downloadAndroid.style.paddingTop = '8px';
-        connect_div.style.marginLeft = '-40px';
+        connect_div.style.marginLeft = '-10px';
 
         downloadIOS.innerHTML = "IOS Download";
         downloadAndroid.innerHTML = "Android Download";
-        connectContent.innerHTML = "Connect you want";
+        connectContent.innerHTML = "Connect Smart";
     }
 }
 
