@@ -43,7 +43,7 @@ $(document).ready(function(){
     });
 
     setTimeout(function () {
-        tryOpenApp();
+        // tryOpenApp();
     }, 1000);
 });
 
@@ -53,7 +53,16 @@ if(typeof DEVICE_TYPE == "undefined") {
     DEVICE_TYPE.ANROID = 1;
     DEVICE_TYPE.IOS = 2;
     DEVICE_TYPE.UNKNOWN = -1;
+};
+
+if (typeof LANG_TYPE == "undefined"){
+    var LANG_TYPE = {};
+    LANG_TYPE.SIMPLE_CHINESE = 0;
+    LANG_TYPE.TAIWAN = 1;
+    LANG_TYPE.ENGLISH = 2;
+    LANG_TYPE.UNKNOWN = -1;
 }
+
 var config = {
     /*scheme:必须 etworld
     * https://github.com/zikko2017/zikko2017.github.io/blob/master == http://apk.zikkotech.com
@@ -111,28 +120,37 @@ var browser = {
 };
 
 function initViewText() {
-    var isChinese = isChineseLang();
+    var langType = getBrowserLanguage();
 
     var connectContent = document.getElementsByTagName("h4")[0];
     var downloadIOS = document.getElementsByTagName("h6")[0];
     var downloadAndroid = document.getElementsByTagName("h6")[1];
     var connect_div = document.getElementsByClassName('connect-div')[0];
-    if (isChinese){
+    var et_phone_logo = document.getElementById('img_phone');
+    if (langType == LANG_TYPE.SIMPLE_CHINESE || langType == LANG_TYPE.TAIWAN){
         downloadIOS.style.fontSize = '40px';
         downloadIOS.style.paddingTop = '4px';
         downloadAndroid.style.fontSize = '40px';
         downloadAndroid.style.paddingTop = '5px';
         connect_div.style.marginLeft = '0';
+        et_phone_logo.src="assets/img/et_phone_zh.png";
 
-        connectContent.innerHTML = "连 接 您 所 想";
-        downloadIOS.innerHTML = "IOS版下载";
-        downloadAndroid.innerHTML = "安卓版下载";
+        if (langType == LANG_TYPE.TAIWAN){
+            connectContent.innerHTML = "連 接 您 所 想";
+            downloadIOS.innerHTML = "IOS版下載";
+            downloadAndroid.innerHTML = "安卓版下載";
+        }else {
+            connectContent.innerHTML = "连 接 您 所 想";
+            downloadIOS.innerHTML = "IOS版下载";
+            downloadAndroid.innerHTML = "安卓版下载";
+        }
     }else{
         downloadIOS.style.fontSize = '30px';
         downloadIOS.style.paddingTop = '8px';
         downloadAndroid.style.fontSize = '30px';
         downloadAndroid.style.paddingTop = '8px';
         connect_div.style.marginLeft = '-10px';
+        et_phone_logo.src="assets/img/et_phone_en.png";
 
         downloadIOS.innerHTML = "IOS Download";
         downloadAndroid.innerHTML = "Android Download";
@@ -143,13 +161,13 @@ function initViewText() {
 function tryOpenApp(){
 
     var deviceType = getDeviceType();
-    var isChinese = isChineseLang();
+    var isEnglish = getBrowserLanguage() == LANG_TYPE.ENGLISH;
 
     if (deviceType == DEVICE_TYPE.PC){
-        if (isChinese){
-            window.location.href = 'http://www.zikko.cn/';  // 公司主页
-        }else{
+        if (isEnglish){
             window.location.href = 'http://www.zikko-store.com/';  // 公司主页
+        }else{
+            window.location.href = 'http://www.zikko.cn/';  // 公司主页
         }
 
         return;
@@ -241,15 +259,22 @@ function isWeixinBrowser(){
 	}
 }
 
-function isChineseLang()
+function getBrowserLanguage()
 {
 	if (navigator.appName == 'Netscape')
-		var language = navigator.language;
+		var language = navigator.language.toLocaleLowerCase();
 	else
-		var language = navigator.browserLanguage;
+		var language = navigator.browserLanguage.toLocaleLowerCase();
 
-	if (language.indexOf('zh') > -1) return true;
-	else return false;
+	if (language.indexOf('zh') > -1){
+	    if (language.indexOf('zh-tw') > -1){
+	        return LANG_TYPE.TAIWAN;
+        }
+
+        return LANG_TYPE.SIMPLE_CHINESE;
+    }
+
+    return LANG_TYPE.ENGLISH;
 	
 	//if (language.indexOf('en') > -1) document.write('english');
 	//else if (language.indexOf('nl') > -1) document.write('dutch');
