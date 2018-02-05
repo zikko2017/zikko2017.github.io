@@ -43,7 +43,7 @@ $(document).ready(function(){
     });
 
     setTimeout(function () {
-        // tryOpenApp();
+        tryOpenApp();
     }, 1000);
 });
 
@@ -116,11 +116,24 @@ function initViewText() {
     var connectContent = document.getElementsByTagName("h4")[0];
     var downloadIOS = document.getElementsByTagName("h6")[0];
     var downloadAndroid = document.getElementsByTagName("h6")[1];
+    var connect_div = document.getElementsByClassName('connect-div')[0];
     if (isChinese){
+        downloadIOS.style.fontSize = '40px';
+        downloadIOS.style.paddingTop = '4px';
+        downloadAndroid.style.fontSize = '40px';
+        downloadAndroid.style.paddingTop = '5px';
+        connect_div.style.marginLeft = '0';
+
         connectContent.innerHTML = "连 接 您 所 想";
         downloadIOS.innerHTML = "IOS下载";
         downloadAndroid.innerHTML = "Android下载";
     }else{
+        downloadIOS.style.fontSize = '30px';
+        downloadIOS.style.paddingTop = '8px';
+        downloadAndroid.style.fontSize = '30px';
+        downloadAndroid.style.paddingTop = '8px';
+        connect_div.style.marginLeft = '-40px';
+
         downloadIOS.innerHTML = "IOS Download";
         downloadAndroid.innerHTML = "Android Download";
         connectContent.innerHTML = "Connect you want";

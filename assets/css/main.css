@@ -132,24 +132,24 @@ h6{
 }
 
 .img-logo{
-	margin-left: -30px;
+	margin-left: -50px;
 	padding-top: 10px;
 }
 
 .phone-container{
-	height: auto;
-	width: 65%;
+	height: 100%;
+	width: 70%;
 	float: left;
-	margin-left: -120px;
-	margin-bottom: 0px
+	margin-left: -140px;
+	margin-bottom: 150px
 }
 
 .text-container{
 	height: auto;
-	width: 35%;
-	float: right;
-	margin-right: 65px;
-	margin-top: 40px;
+	width: 25%;
+	float: left;
+	margin-left: 40px;
+	margin-top: 100px;
 }
 
 .img-responsive{
@@ -157,32 +157,74 @@ h6{
 }
 
 .connect-div{
-	text-align:center;
 	color: white;
-	width: 155%;
-	margin-left: -30px;
-	padding-top: 40px;
+	width: 245%;
+	margin-left: 0px;
+	padding-top: 35px;
 }
 
 .fun-text-connect{
 	color: white;
-	font-size: 40px;
+	font-size: 45px;
 	font-family: 微软雅黑;
+}
+
+.fa-apple{
+	padding-top: 6px;
+}
+
+.fa-android{
+	padding-top: 6px;
+}
+
+/*Download button property*/
+.craft-btn{
+	border-color: #ffffff;
+	border-width: 3px;
+	border-radius: 50px;
+	background-color:rgba(255,255,255,0.2);// -->70%的不透明度
+	margin-left: -20px;
+	width: 225%;
+	margin-left: -30px;
+	min-height: 70px;
+	margin-top: 35%;
+	font-family: 微软雅黑;
+}
+
+.craft-btn span{
+	color: whitesmoke;
+	float: left;
+	padding-left: 6px;
+	font-size: 40px;
+}
+.craft-btn-content h4{
+	font-size: 40px;
+}
+.craft-btn-content{
+	text-align: left;
+}
+.craft-btn-content h6{
+	color: whitesmoke;
+	font-size: 30px;
+}
+.craft-btn-content h4, .craft-btn-content h6{
+	margin: 0px;
+	margin-left: 40px;
+}
+
+.craft-btn:hover{
+	color: #ffffff;
+	background-color: #26a7fc;
+	border-color:#26a7fc;
 }
 
 .ios_div{
 
 }
 
-.dl-ios-text{
-	padding-top: 9px;
-	margin-left: 0px;
-	text-align: center;
-}
-
-.dl-android-text{
-	padding-top: 9px;
-	padding-right: 20px;
+.dl-text{
+	padding-top: 8px;
+	padding-right: 0px;
 	text-align: center;
 }
 
@@ -226,49 +268,6 @@ h6{
 	overflow:hidden;
 }
 
-.fa-apple{
-	padding-top: 8px;
-}
-
-.fa-android{
-	padding-top: 8px;
-}
-
-/*Download button property*/
-.craft-btn{
-	border-color: #ffeeff;
-	border-radius: 50px;
-	color: #ffffff;
-	width: 160%;
-	margin-left: -30px;
-	min-height: 70px;
-	margin-top: 30%;
-	font-family: 微软雅黑;
-}
-.craft-btn span{
-	float: left;
-	padding-left: 6px;
-	font-size: 40px;
-}
-.craft-btn-content h4{
-	font-size: 50px;
-}
-.craft-btn-content{
-	text-align: left;
-}
-.craft-btn-content h6{
-
-	font-size: 35px;
-}
-.craft-btn-content h4, .craft-btn-content h6{
-	margin: 0px;
-	margin-left: 40px;
-}
-.craft-btn:hover{
-	color: #ffffff;
-	background-color: #e1666a;
-	border-color:#e1666a;
-}
 /*Feature section style*/
 .feature-block h3{
 	color:#666666;
