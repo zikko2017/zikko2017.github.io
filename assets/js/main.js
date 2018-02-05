@@ -71,7 +71,7 @@ var config = {
      *  */
     scheme_IOS: 'etworld://',
     scheme_Adr: 'etworld://',
-    ios_download_url: 'https://itunes.apple.com/us/app/et-world-download-all-watch-all/id1059227278?mt=8',
+    ios_download_url: 'itms-apps://itunes.apple.com/us/app/et-world-download-all-watch-all/id1059227278?mt=8',
     android_download_url:'http://apk.zikkotech.com/AppUpdate/apk/etworld.apk?raw=true',
     timeout: 800
 };
@@ -240,7 +240,7 @@ function downloadApp() {
     if (deviceType === 2) {
         download_url = config.ios_download_url;
 
-        alert('open app666: ' + download_url);
+        alert('open app7777: ' + download_url);
 
         var ifr = document.createElement('iframe');
         ifr.src = download_url;
