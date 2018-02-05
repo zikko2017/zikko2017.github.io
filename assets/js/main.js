@@ -240,7 +240,7 @@ function downloadApp() {
     if (deviceType === 2) {
         download_url = config.ios_download_url;
 
-        alert('open app7777: ' + download_url);
+        alert('open app8888: ' + download_url);
 
         var ifr = document.createElement('iframe');
         ifr.src = download_url;
