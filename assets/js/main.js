@@ -125,8 +125,8 @@ function initViewText() {
         connect_div.style.marginLeft = '0';
 
         connectContent.innerHTML = "连 接 您 所 想";
-        downloadIOS.innerHTML = "IOS下载";
-        downloadAndroid.innerHTML = "Android下载";
+        downloadIOS.innerHTML = "IOS版下载";
+        downloadAndroid.innerHTML = "安卓版下载";
     }else{
         downloadIOS.style.fontSize = '30px';
         downloadIOS.style.paddingTop = '8px';
