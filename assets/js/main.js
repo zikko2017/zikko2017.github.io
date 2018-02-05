@@ -6,7 +6,7 @@ $(document).ready(function(){
    initViewText(langType);
 
     /*Carousel view scripts*/
-/*    $("#testimonial").owlCarousel({
+    $("#testimonial").owlCarousel({
         items: 1,
         loop:true,
         autoplay: true,
@@ -17,7 +17,7 @@ $(document).ready(function(){
         autoHeight: true
     });
 
-    /!*Menu bar background color change script*!/
+    /*Menu bar background color change script*/
     $("#menu-click").click(function(event){
             event.preventDefault();
         });
@@ -31,7 +31,7 @@ $(document).ready(function(){
     }
     });
 
-    /!*Smoth transition script*!/
+    /*Smoth transition script*/
      // This is a functions that scrolls to #{blah}link
     $('a[href^="#"]').on('click', function(event) {
         var target = $(this.getAttribute('href'));
@@ -41,7 +41,7 @@ $(document).ready(function(){
                 scrollTop: target.offset().top
             }, 1000);
         }
-    });*/
+    });
 
     setTimeout(function () {
         tryOpenApp(langType);
