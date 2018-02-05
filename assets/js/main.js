@@ -5,7 +5,7 @@ $(document).ready(function(){
    initViewText();
 
     /*Carousel view scripts*/
-    $("#testimonial").owlCarousel({
+  /*  $("#testimonial").owlCarousel({
         items: 1,
         loop:true,
         autoplay: true,
@@ -14,7 +14,7 @@ $(document).ready(function(){
         margin: 10,
         nav: true,
         autoHeight: true
-    });
+    });*/
 
     /*Menu bar background color change script*/
     $("#menu-click").click(function(event){
@@ -47,7 +47,7 @@ $(document).ready(function(){
     }, 1000);
 });
 
-if(typeof DEVICE_TYPE == "undefined") {
+if(typeof DEVICE_TYPE === "undefined") {
     var DEVICE_TYPE = {};
     DEVICE_TYPE.PC = 0;
     DEVICE_TYPE.ANROID = 1;
@@ -55,7 +55,7 @@ if(typeof DEVICE_TYPE == "undefined") {
     DEVICE_TYPE.UNKNOWN = -1;
 };
 
-if (typeof LANG_TYPE == "undefined"){
+if (typeof LANG_TYPE === "undefined"){
     var LANG_TYPE = {};
     LANG_TYPE.SIMPLE_CHINESE = 0;
     LANG_TYPE.TAIWAN = 1;
@@ -90,7 +90,7 @@ var browser = {
 
             webKit: u.indexOf('AppleWebKit') > -1, /*苹果、谷歌内核*/
 
-            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,        /*火狐内核*/
+            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') === -1,        /*火狐内核*/
 
             mobile: !!u.match(/AppleWebKit.*Mobile.*/),        /*是否为移动终端*/
 
@@ -102,7 +102,7 @@ var browser = {
 
             iPad: u.indexOf('iPad') > -1,      /*是否iPad*/
 
-            webApp: u.indexOf('Safari') == -1,          /*是否web应该程序，没有头部与底部*/
+            webApp: u.indexOf('Safari') === -1,          /*是否web应该程序，没有头部与底部*/
 
             souyue: u.indexOf('souyue') > -1,
 
@@ -126,8 +126,8 @@ function initViewText() {
     var downloadAndroid = document.getElementsByTagName("h6")[1];
     var connect_div = document.getElementsByClassName('connect-div')[0];
     var et_phone_logo = document.getElementById('img_phone');
-    // langType = LANG_TYPE.ENGLISH;
-    if (langType == LANG_TYPE.ENGLISH) {
+    // langType = 2;
+    if (langType === 2) {
         downloadIOS.style.fontSize = '30px';
         downloadIOS.style.paddingTop = '10px';
         downloadAndroid.style.fontSize = '30px';
@@ -146,7 +146,7 @@ function initViewText() {
         connect_div.style.marginLeft = '0';
         et_phone_logo.src="assets/img/et_phone_zh.png";
 
-        if (langType == LANG_TYPE.TAIWAN){
+        if (langType === 1){
             connectContent.innerHTML = "連 接 您 所 想";
             downloadIOS.innerHTML = "IOS版下載";
             downloadAndroid.innerHTML = "安卓版下載";
@@ -161,12 +161,12 @@ function initViewText() {
 function tryOpenApp(){
 
     var deviceType = getDeviceType();
-    var isEnglish = getBrowserLanguage() == LANG_TYPE.ENGLISH;
+    var langType = getBrowserLanguage();
 
     // alert(deviceType);
 
-    if (deviceType == DEVICE_TYPE.PC){
-        if (isEnglish){
+    if (deviceType === 0){
+        if (langType === 2){
             window.location.href = 'http://www.zikko-store.com/';  // 公司主页
         }else{
             window.location.href = 'http://www.zikko.cn/';  // 公司主页
@@ -174,7 +174,7 @@ function tryOpenApp(){
 
         return;
     }
-    if (DEVICE_TYPE.UNKNOWN == deviceType){
+    if (-1 === deviceType){
         window.close();
         return;
     }
@@ -201,12 +201,12 @@ function tryOpenApp(){
  */
 function openApp(platType) {
     var ifr = document.createElement('iframe');
-    ifr.src = platType == DEVICE_TYPE.IOS ? config.scheme_IOS : config.scheme_Adr;
+    ifr.src = platType === 2 ? config.scheme_IOS : config.scheme_Adr;
     ifr.style.display = 'none';
     document.body.appendChild(ifr);
 
     var etworld_url = config.scheme_Adr;
-    if (platType == DEVICE_TYPE.IOS) {
+    if (platType === 2) {
         etworld_url = config.scheme_IOS;
     }
 
@@ -221,8 +221,8 @@ function openApp(platType) {
  */
 function downloadApp() {
 	var deviceType = getDeviceType();
-    if (DEVICE_TYPE.PC == deviceType ) { // 是PC端
-        var isEnglish = getBrowserLanguage() == LANG_TYPE.ENGLISH;
+    if (0 === deviceType ) { // 是PC端
+        var isEnglish = getBrowserLanguage() === 2;
         if (!isEnglish){
             window.location.href = 'http://www.zikko.cn/';  // 公司主页
         }else{
@@ -232,13 +232,13 @@ function downloadApp() {
         return;
     }
 
-    if (DEVICE_TYPE.UNKNOWN == deviceType){
+    if (-1 === deviceType){
     	window.close();
     	return;
 	}
 
     var download_url = config.android_download_url;
-    if (deviceType == DEVICE_TYPE.IOS) {
+    if (deviceType === 2) {
         download_url = config.ios_download_url;
     }
     window.location = download_url;
@@ -255,7 +255,9 @@ function isWeixinBrowser(){
 
 	var ua = navigator.userAgent.toLowerCase();
 
-	if(ua.match(/MicroMessenger/i)=="micromessenger") {
+	if (ua === null) return false;
+
+	if(ua.match(/MicroMessenger/i)==="micromessenger") {
 
 		return true;
 
@@ -266,20 +268,28 @@ function isWeixinBrowser(){
 
 function getBrowserLanguage()
 {
-	if (navigator.appName == 'Netscape')
-		var language = navigator.language.toLocaleLowerCase();
-	else
-		var language = navigator.browserLanguage.toLocaleLowerCase();
-
-	if (language.indexOf('zh') > -1){
-	    if (language.indexOf('zh-tw') > -1){
-	        return LANG_TYPE.TAIWAN;
+    var language = null;
+	if (navigator.appName.toLocaleLowerCase().indexOf('netscape') > -1)// == 'Netscape'
+		language = navigator.language.toLocaleLowerCase();
+	else {
+	    try{
+            language = navigator.browserLanguage.toLocaleLowerCase();
+        }catch(err){
+            language = null;
         }
-
-        return LANG_TYPE.SIMPLE_CHINESE;
     }
 
-    return LANG_TYPE.ENGLISH;
+    if (language != null){
+        if (language.indexOf('zh') > -1){
+            if (language.indexOf('zh-tw') > -1){
+                return 1;// LANG_TYPE.TAIWAN;
+            }
+
+            return 0;//LANG_TYPE.SIMPLE_CHINESE;
+        }
+    }
+
+    return 2;// LANG_TYPE.ENGLISH;
 	
 	//if (language.indexOf('en') > -1) document.write('english');
 	//else if (language.indexOf('nl') > -1) document.write('dutch');
