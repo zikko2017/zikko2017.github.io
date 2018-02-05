@@ -43,7 +43,7 @@ $(document).ready(function(){
     });
 
     setTimeout(function () {
-        tryOpenApp();
+        // tryOpenApp();
     }, 1000);
 });
 

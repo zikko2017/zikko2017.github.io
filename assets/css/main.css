@@ -141,7 +141,7 @@ h6{
 	width: 65%;
 	float: left;
 	margin-left: -120px;
-	margin-bottom: 250px
+	margin-bottom: 0px
 }
 
 .text-container{
@@ -159,8 +159,8 @@ h6{
 .connect-div{
 	text-align:center;
 	color: white;
-	width: 125%;
-	padding-left: 20px;
+	width: 155%;
+	margin-left: -30px;
 	padding-top: 40px;
 }
 
@@ -175,13 +175,13 @@ h6{
 }
 
 .dl-ios-text{
-	padding-top: 7px;
+	padding-top: 9px;
 	margin-left: 0px;
 	text-align: center;
 }
 
 .dl-android-text{
-	padding-top: 7px;
+	padding-top: 9px;
 	padding-right: 20px;
 	text-align: center;
 }
@@ -227,11 +227,11 @@ h6{
 }
 
 .fa-apple{
-	padding-top: 6px;
+	padding-top: 8px;
 }
 
 .fa-android{
-	padding-top: 6px;
+	padding-top: 8px;
 }
 
 /*Download button property*/
