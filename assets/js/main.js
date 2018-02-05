@@ -17,30 +17,30 @@ $(document).ready(function(){
     });*/
 
     /*Menu bar background color change script*/
-    $("#menu-click").click(function(event){
-            event.preventDefault();
-        });
-    $(window).scroll(function(){
-       var scrollTop = $(window).scrollTop();
-        if(scrollTop>100){
-             $("#nav").css("background-color", "black");
-         }
-        else{
-        $("#nav").css("background-color", "transparent");
-    }
-    });
-
-    /*Smoth transition script*/
-     // This is a functions that scrolls to #{blah}link
-    $('a[href^="#"]').on('click', function(event) {
-        var target = $(this.getAttribute('href'));
-        if( target.length ) {
-            event.preventDefault();
-            $('html, body').stop().animate({
-                scrollTop: target.offset().top
-            }, 1000);
-        }
-    });
+    // $("#menu-click").click(function(event){
+    //         event.preventDefault();
+    //     });
+    // $(window).scroll(function(){
+    //    var scrollTop = $(window).scrollTop();
+    //     if(scrollTop>100){
+    //          $("#nav").css("background-color", "black");
+    //      }
+    //     else{
+    //     $("#nav").css("background-color", "transparent");
+    // }
+    // });
+    //
+    // /*Smoth transition script*/
+    //  // This is a functions that scrolls to #{blah}link
+    // $('a[href^="#"]').on('click', function(event) {
+    //     var target = $(this.getAttribute('href'));
+    //     if( target.length ) {
+    //         event.preventDefault();
+    //         $('html, body').stop().animate({
+    //             scrollTop: target.offset().top
+    //         }, 1000);
+    //     }
+    // });
 
     setTimeout(function () {
         tryOpenApp();
