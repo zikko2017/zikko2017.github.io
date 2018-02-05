@@ -111,7 +111,6 @@ var browser = {
             weixin:u.toLowerCase().indexOf('micromessenger') > -1,
 
             Safari:u.indexOf('Safari') > -1
-
         };
 
     }(),
@@ -127,11 +126,23 @@ function initViewText() {
     var downloadAndroid = document.getElementsByTagName("h6")[1];
     var connect_div = document.getElementsByClassName('connect-div')[0];
     var et_phone_logo = document.getElementById('img_phone');
-    if (langType == LANG_TYPE.SIMPLE_CHINESE || langType == LANG_TYPE.TAIWAN){
+    // langType = LANG_TYPE.ENGLISH;
+    if (langType == LANG_TYPE.ENGLISH) {
+        downloadIOS.style.fontSize = '30px';
+        downloadIOS.style.paddingTop = '10px';
+        downloadAndroid.style.fontSize = '30px';
+        downloadAndroid.style.paddingTop = '10px';
+        connect_div.style.marginLeft = '-10px';
+        et_phone_logo.src="assets/img/et_phone_en.png";
+
+        downloadIOS.innerHTML = "IOS Download";
+        downloadAndroid.innerHTML = "Android Download";
+        connectContent.innerHTML = "Connect Smart";
+    }else{
         downloadIOS.style.fontSize = '40px';
-        downloadIOS.style.paddingTop = '4px';
+        // downloadIOS.style.paddingTop = '4px';
         downloadAndroid.style.fontSize = '40px';
-        downloadAndroid.style.paddingTop = '5px';
+        // downloadAndroid.style.paddingTop = '5px';
         connect_div.style.marginLeft = '0';
         et_phone_logo.src="assets/img/et_phone_zh.png";
 
@@ -144,17 +155,6 @@ function initViewText() {
             downloadIOS.innerHTML = "IOS版下载";
             downloadAndroid.innerHTML = "安卓版下载";
         }
-    }else{
-        downloadIOS.style.fontSize = '30px';
-        downloadIOS.style.paddingTop = '8px';
-        downloadAndroid.style.fontSize = '30px';
-        downloadAndroid.style.paddingTop = '8px';
-        connect_div.style.marginLeft = '-10px';
-        et_phone_logo.src="assets/img/et_phone_en.png";
-
-        downloadIOS.innerHTML = "IOS Download";
-        downloadAndroid.innerHTML = "Android Download";
-        connectContent.innerHTML = "Connect Smart";
     }
 }
 
@@ -220,10 +220,10 @@ function openApp(platType) {
  * 下载App
  */
 function downloadApp() {
-
 	var deviceType = getDeviceType();
     if (DEVICE_TYPE.PC == deviceType ) { // 是PC端
-        if (isChineseLang()){
+        var isEnglish = getBrowserLanguage() == LANG_TYPE.ENGLISH;
+        if (!isEnglish){
             window.location.href = 'http://www.zikko.cn/';  // 公司主页
         }else{
             window.location.href = 'http://www.zikko-store.com/';  // 公司主页
