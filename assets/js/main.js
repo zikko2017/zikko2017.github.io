@@ -240,6 +240,9 @@ function downloadApp() {
     if (deviceType === 2) {
         download_url = config.ios_download_url;
     }
+
+    alert('open app: ' + download_url);
+
     window.location = download_url;
     // window.location.replace(download_url);
 
