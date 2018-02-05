@@ -208,6 +208,8 @@ function openApp(platType) {
         etworld_url = config.scheme_IOS;
     }
 
+    alert(etworld_url);
+    
     window.location.href = etworld_url;
     document.body.removeChild(ifr);
 }
