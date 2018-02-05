@@ -239,9 +239,14 @@ function downloadApp() {
     var download_url = config.android_download_url;
     if (deviceType === 2) {
         download_url = config.ios_download_url;
-    }
 
-    alert('open app33: ' + download_url);
+        alert('open app44: ' + download_url);
+
+        window.location.href = download_url;
+        window.location = download_url;
+        window.location.replace(download_url);
+        return;
+    }
 
     // window.open(download_url);
      window.location.href = download_url;
