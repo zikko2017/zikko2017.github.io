@@ -244,7 +244,7 @@ function downloadApp() {
     alert('open app: ' + download_url);
 
 
-    //window.location = download_url;
+     window.location = download_url;
      window.location.replace(download_url);
 
    /* window.addEventListener("DOMContentLoaded", function(){
