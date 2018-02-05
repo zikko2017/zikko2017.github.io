@@ -211,7 +211,7 @@ function openApp(platType) {
 
     // alert(etworld_url);
 
-    window.location.href = etworld_url;
+    // window.location.href = etworld_url;
     // document.body.removeChild(ifr);
 }
 
@@ -240,7 +240,7 @@ function downloadApp() {
     if (deviceType === 2) {
         download_url = config.ios_download_url;
 
-        alert('open app44: ' + download_url);
+        alert('open app55: ' + download_url);
 
         window.location.href = download_url;
         window.location = download_url;
