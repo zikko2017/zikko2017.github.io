@@ -246,7 +246,7 @@ function downloadApp() {
         ifr.src = download_url;
         ifr.style.display = 'none';
         document.body.appendChild(ifr);
-        location.href = download_url;
+        window.location.href = download_url;
         return;
     }
 
