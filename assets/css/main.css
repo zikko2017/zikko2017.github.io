@@ -137,11 +137,11 @@ h6{
 }
 
 .phone-container{
-	height: 100%;
-	width: 70%;
+	height: 10%;
+	width: 68%;
 	float: left;
 	margin-left: -140px;
-	margin-bottom: 230px
+	margin-bottom: 210px
 }
 
 .text-container{
@@ -201,7 +201,7 @@ h6{
 	font-size: 40px;
 }
 .craft-btn-content{
-	text-align: left;
+	text-align: center;
 }
 .craft-btn-content h6{
 	color: whitesmoke;
