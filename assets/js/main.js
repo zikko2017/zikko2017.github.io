@@ -206,9 +206,10 @@ function openApp(platType) {
     var etworld_url = config.scheme_Adr;
     if (platType === 2) {
         etworld_url = config.scheme_IOS;
-        if (getOs().indexOf("Safari") > -1)
+        if (getOs().indexOf("Safari") > -1){
+            alert("open safari");
             window.open(etworld_url);
-        else{
+        }else{
             window.location.href = etworld_url;
             window.location = etworld_url;
         }
@@ -247,7 +248,8 @@ function downloadApp() {
         download_url = config.ios_download_url;
 
         if (getOs().indexOf("Safari") > -1){
-            window.location = download_url;
+            alert("open safari");
+            window.open(download_url);
         }else{
             var ifr = document.createElement('iframe');
             ifr.src = download_url;
