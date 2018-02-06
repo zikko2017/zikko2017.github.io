@@ -248,7 +248,7 @@ function downloadApp() {
         ifr.style.display = 'none';
         document.body.appendChild(ifr);
         window.open(download_url);*/
-       alert(download_url);
+       // alert(download_url);
         window.location = download_url;
         // window.location.href = download_url;
     }else{
