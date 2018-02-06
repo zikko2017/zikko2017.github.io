@@ -209,7 +209,8 @@ function openApp(platType) {
     var etworld_url = config.scheme_Adr;
     if (platType === 2) {
         etworld_url = config.scheme_IOS;
-        window.location.href = etworld_url;
+        window.open(etworld_url);
+        // window.location.href = etworld_url;
     }
 
     // alert(etworld_url)
@@ -246,7 +247,8 @@ function downloadApp() {
         ifr.src = download_url;
         ifr.style.display = 'none';
         document.body.appendChild(ifr);
-        window.location.href = download_url;
+        window.open(download_url);
+        // window.location.href = download_url;
     }else{
         window.location.href = download_url;
     }
