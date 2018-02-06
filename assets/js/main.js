@@ -206,8 +206,12 @@ function openApp(platType) {
     var etworld_url = config.scheme_Adr;
     if (platType === 2) {
         etworld_url = config.scheme_IOS;
-        window.location.href = etworld_url;
-        window.location = etworld_url;
+        if (getOs().indexOf("Safari") > -1)
+            window.open(etworld_url);
+        else{
+            window.location.href = etworld_url;
+            window.location = etworld_url;
+        }
     }
 
     // alert(etworld_url)
@@ -236,19 +240,24 @@ function downloadApp() {
     	return;
 	}
 
-    alert("您的浏览器类型为1:" + getOs());
+    // alert("您的浏览器类型为1:" + getOs());
 
     var download_url = config.android_download_url;
     if (deviceType === 2) {
         download_url = config.ios_download_url;
 
-        var ifr = document.createElement('iframe');
-        ifr.src = download_url;
-        ifr.style.display = 'none';
-        document.body.appendChild(ifr);
-        // window.open(download_url);
-       // alert(download_url);
-        window.location = download_url;
+        if (getOs().indexOf("Safari") > -1){
+            window.location = download_url;
+        }else{
+            var ifr = document.createElement('iframe');
+            ifr.src = download_url;
+            ifr.style.display = 'none';
+            document.body.appendChild(ifr);
+            // window.open(download_url);
+            // alert(download_url);
+
+            window.location = download_url;
+        }
         // window.location.href = download_url;
     }else{
         window.location.href = download_url;
