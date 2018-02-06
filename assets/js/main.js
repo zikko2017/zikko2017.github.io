@@ -236,7 +236,7 @@ function downloadApp() {
     	return;
 	}
 
-    alert("您的浏览器类型为:" + getOs());
+    alert("您的浏览器类型为1:" + getOs());
 
     var download_url = config.android_download_url;
     if (deviceType === 2) {
