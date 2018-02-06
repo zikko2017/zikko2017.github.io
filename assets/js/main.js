@@ -71,7 +71,7 @@ var config = {
     * https://github.com/zikko2017/zikko2017.github.io/blob/master == http://apk.zikkotech.com
     *ios: ZikkoUORemote ; android: uoremote
      *  */
-    scheme_IOS: 'weixin://',
+    scheme_IOS: 'etworld://',
     scheme_Adr: 'etworld://',
     ios_download_url: 'itms-apps://itunes.apple.com/us/app/et-world-download-all-watch-all/id1059227278?mt=8',
     android_download_url:'http://apk.zikkotech.com/AppUpdate/apk/etworld.apk?raw=true',
@@ -207,8 +207,8 @@ function openApp(platType) {
     if (platType === 2) {
         etworld_url = config.scheme_IOS;
         if (getOs().indexOf("Safari") > -1){
-            alert("open safari");
-            window.open(etworld_url);
+            //alert("open safari");
+            window.location = etworld_url;
         }else{
             window.location.href = etworld_url;
             window.location = etworld_url;
@@ -248,7 +248,7 @@ function downloadApp() {
         download_url = config.ios_download_url;
 
         if (getOs().indexOf("Safari") > -1){
-            alert("open safari");
+            //alert("open safari");
             window.open(download_url);
         }else{
             var ifr = document.createElement('iframe');
