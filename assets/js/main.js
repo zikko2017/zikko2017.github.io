@@ -247,6 +247,7 @@ function downloadApp() {
     if (deviceType === 2) {
         download_url = config.ios_download_url;
 
+        // alert("open safari");
         window.open(download_url);
         // if (getOs().indexOf("Safari") > -1){
         //     //alert("open safari");
