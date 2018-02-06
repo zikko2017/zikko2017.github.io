@@ -162,9 +162,6 @@ function initViewText(langType) {
 function tryOpenApp(langType){
 
     var deviceType = getDeviceType();
-    // var langType = getBrowserLanguage();
-
-    // alert(deviceType);
 
     if (deviceType === 0){
         if (langType === 2){
@@ -210,7 +207,7 @@ function openApp(platType) {
     if (platType === 2) {
         etworld_url = config.scheme_IOS;
         window.location.href = etworld_url;
-        // window.location = etworld_url;
+        window.location = etworld_url;
     }
 
     // alert(etworld_url)
@@ -239,15 +236,17 @@ function downloadApp() {
     	return;
 	}
 
+    alert("您的浏览器类型为:" + getOs());
+
     var download_url = config.android_download_url;
     if (deviceType === 2) {
         download_url = config.ios_download_url;
 
-       /* var ifr = document.createElement('iframe');
+        var ifr = document.createElement('iframe');
         ifr.src = download_url;
         ifr.style.display = 'none';
         document.body.appendChild(ifr);
-        window.open(download_url);*/
+        // window.open(download_url);
        // alert(download_url);
         window.location = download_url;
         // window.location.href = download_url;
@@ -263,6 +262,25 @@ function downloadApp() {
         document.getElementById("J-call-app").addEventListener('click',openclient,false);
 
     }, false);*/
+}
+
+function getOs()
+{
+    if(navigator.userAgent.indexOf("MSIE")>0) {
+        return "MSIE";
+    }
+    if(navigator.userAgent.indexOf("Firefox")>0){
+        return "Firefox";
+    }
+    if(navigator.userAgent.indexOf("Safari")>0) {
+        return "Safari";
+    }
+    if(navigator.userAgent.indexOf("Camino")>0){
+        return "Camino";
+    }
+    if(navigator.userAgent.indexOf("Gecko/")>0){
+        return "Gecko";
+    }
 }
 
 // 是微信浏览器
