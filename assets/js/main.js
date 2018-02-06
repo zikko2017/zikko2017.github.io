@@ -71,7 +71,7 @@ var config = {
     * https://github.com/zikko2017/zikko2017.github.io/blob/master == http://apk.zikkotech.com
     *ios: ZikkoUORemote ; android: uoremote
      *  */
-    scheme_IOS: 'etworld://',
+    scheme_IOS: 'weixin://',
     scheme_Adr: 'etworld://',
     ios_download_url: 'itms-apps://itunes.apple.com/us/app/et-world-download-all-watch-all/id1059227278?mt=8',
     android_download_url:'http://apk.zikkotech.com/AppUpdate/apk/etworld.apk?raw=true',
