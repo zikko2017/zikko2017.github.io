@@ -1,12 +1,14 @@
 
 
-$(document).ready(function(){
+
+// $(document).ready(function(){
+function docInit() {
 
     var langType = getBrowserLanguage();
    initViewText(langType);
 
     /*Carousel view scripts*/
-    $("#testimonial").owlCarousel({
+   /* $("#testimonial").owlCarousel({
         items: 1,
         loop:true,
         autoplay: true,
@@ -17,7 +19,7 @@ $(document).ready(function(){
         autoHeight: true
     });
 
-    /*Menu bar background color change script*/
+    /!*Menu bar background color change script*!/
     $("#menu-click").click(function(event){
             event.preventDefault();
         });
@@ -31,7 +33,7 @@ $(document).ready(function(){
     }
     });
 
-    /*Smoth transition script*/
+    /!*Smoth transition script*!/
      // This is a functions that scrolls to #{blah}link
     $('a[href^="#"]').on('click', function(event) {
         var target = $(this.getAttribute('href'));
@@ -42,11 +44,11 @@ $(document).ready(function(){
             }, 1000);
         }
     });
-
+*/
     setTimeout(function () {
         tryOpenApp(langType);
     }, 1000);
-});
+}
 
 if(typeof DEVICE_TYPE === "undefined") {
     var DEVICE_TYPE = {};
@@ -145,7 +147,7 @@ function initViewText(langType) {
         connect_div.style.marginLeft = '0';
         et_phone_logo.src="assets/img/et_phone_zh.png";
 
-        if (langType === 1){
+        if (langType === 1){//繁体
             connectContent.innerHTML = "連 接 您 所 想";
             downloadIOS.innerHTML = "IOS版下載";
             downloadAndroid.innerHTML = "安卓版下載";
@@ -207,11 +209,11 @@ function openApp(platType) {
     var etworld_url = config.scheme_Adr;
     if (platType === 2) {
         etworld_url = config.scheme_IOS;
+        window.location.href = etworld_url;
     }
 
-    // alert(etworld_url);
+    // alert(etworld_url)
 
-    // window.location.href = etworld_url;
     // document.body.removeChild(ifr);
 }
 
@@ -240,18 +242,17 @@ function downloadApp() {
     if (deviceType === 2) {
         download_url = config.ios_download_url;
 
-        alert('open app8888: ' + download_url);
-
         var ifr = document.createElement('iframe');
         ifr.src = download_url;
         ifr.style.display = 'none';
         document.body.appendChild(ifr);
         window.location.href = download_url;
-        return;
+    }else{
+        window.location.href = download_url;
     }
 
     // window.open(download_url);
-     window.location.href = download_url;
+
      // window.location.replace(download_url);
 
    /* window.addEventListener("DOMContentLoaded", function(){
