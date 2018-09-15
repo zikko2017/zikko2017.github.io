@@ -76,7 +76,10 @@ var config = {
     ios_download_url: 'itms-apps://itunes.apple.com/us/app/et-world-download-all-watch-all/id1059227278?mt=8',
     android_download_url:'http://etdownload.zikkotech.com/apps/etworld.apk',
     // android_download_url:'http://apk.zikkotech.com/AppUpdate/apk/etworld.apk?raw=true',
-    timeout: 800
+    timeout: 800,
+    zikko_offical_website: "https://www.zikko.cn",//即刻官网
+    zikko_jd_website: "https://zikko.jd.com",//京东即刻店
+    zikko_account_website: "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI5NTkzNTIxMg==&scene=126#wechat_redirect",//即刻公众号
 };
 
 var browser = {
@@ -126,36 +129,52 @@ function initViewText(langType) {
     var connectContent = document.getElementsByTagName("h4")[0];
     var downloadIOS = document.getElementsByTagName("h6")[0];
     var downloadAndroid = document.getElementsByTagName("h6")[1];
+    var zikkoWebsite = document.getElementsByTagName("h6")[2];
     var connect_div = document.getElementsByClassName('connect-div')[0];
     var et_phone_logo = document.getElementById('img_phone');
-    // langType = 2;
+
+    var textZikkoWebSite = document.getElementById("zikko-account-bottom-container");
+    var textJdWebSite = document.getElementById("jd-bottom-container");
     if (langType === 2) {
+        textZikkoWebSite.style.display = "none";
+        textJdWebSite.style.display = "none";
+
         downloadIOS.style.fontSize = '30px';
         downloadIOS.style.paddingTop = '10px';
         downloadAndroid.style.fontSize = '30px';
         downloadAndroid.style.paddingTop = '10px';
+        zikkoWebsite.style.fontSize = '30px';
+        zikkoWebsite.style.paddingTop = '10px';
         connect_div.style.marginLeft = '-10px';
         et_phone_logo.src="assets/img/et_phone_en.png";
 
         downloadIOS.innerHTML = "IOS Download";
         downloadAndroid.innerHTML = "Android Download";
+        zikkoWebsite.innerHTML = "Zikko OfficalSite";
         connectContent.innerHTML = "Connect Smart";
     }else{
         downloadIOS.style.fontSize = '40px';
-        // downloadIOS.style.paddingTop = '4px';
         downloadAndroid.style.fontSize = '40px';
-        // downloadAndroid.style.paddingTop = '5px';
+        zikkoWebsite.style.fontSize = '40px';
         connect_div.style.marginLeft = '0';
         et_phone_logo.src="assets/img/et_phone_zh.png";
 
         if (langType === 1){//繁体
+            textZikkoWebSite.style.display = "none";
+            textJdWebSite.style.display = "none";
+
             connectContent.innerHTML = "連 接 您 所 想";
             downloadIOS.innerHTML = "IOS版下載";
             downloadAndroid.innerHTML = "安卓版下載";
+            zikkoWebsite.innerHTML = "Zikko官網";
         }else {
+            textZikkoWebSite.style.display = '';
+            textJdWebSite.style.display = '';
+
             connectContent.innerHTML = "连 接 您 所 想";
             downloadIOS.innerHTML = "IOS版下载";
             downloadAndroid.innerHTML = "安卓版下载";
+            zikkoWebsite.innerHTML = "Zikko官网";
         }
     }
 }
@@ -164,12 +183,8 @@ function tryOpenApp(langType){
 
     var deviceType = getDeviceType();
 
-    if (deviceType === 0){
-        if (langType === 2){
-            window.location.href = 'http://www.zikko-store.com/';  // 公司主页
-        }else{
-            window.location.href = 'http://www.zikko.cn/';  // 公司主页
-        }
+    if (deviceType === 0){//pc端直接跳转到官网
+        window.location.href = config.zikko_offical_website;
 
         return;
     }
@@ -227,12 +242,8 @@ function openApp(platType) {
 function downloadApp() {
 	var deviceType = getDeviceType();
     if (0 === deviceType ) { // 是PC端
-        var isEnglish = getBrowserLanguage() === 2;
-        if (!isEnglish){
-            window.location.href = 'http://www.zikko.cn/';  // 公司主页
-        }else{
-            window.location.href = 'http://www.zikko-store.com/';  // 公司主页
-        }
+        // var isEnglish = getBrowserLanguage() === 2;
+        window.location.href = config.zikko_offical_website;  // 公司主页
 
         return;
     }
@@ -276,6 +287,18 @@ function downloadApp() {
         document.getElementById("J-call-app").addEventListener('click',openclient,false);
 
     }, false);*/
+}
+
+/**
+ * 进入即刻官网
+ */
+function onToZikkoWebsite(webType) {
+    if (webType == "jd"){//即刻京东店
+        window.location.href = config.zikko_jd_website;
+    }else if(webType == "zikko_account"){//公众号
+        window.location.href = config.zikko_account_website;
+    }else//官网
+        window.location.href = config.zikko_offical_website;
 }
 
 function getOs()
